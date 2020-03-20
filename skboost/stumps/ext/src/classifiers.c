@@ -474,9 +474,15 @@ static PyMethodDef ClassifierMethods[] = {
      {NULL, NULL, 0, NULL} /* Sentinel */
 };
 
-PyMODINIT_FUNC initclassifiers(void)
+static struct PyModuleDef Classifiers = {
+	PyModuleDef_HEAD_INIT,
+	"classifiers",
+	NULL,
+	-1,
+	ClassifierMethods
+};
+
+PyMODINIT_FUNC PyInit_classifiers(void)
 {
-    char * docstring = "Simple classifiers implemented in C.";
-    (void) Py_InitModule3("classifiers", ClassifierMethods, docstring);
-    import_array();
+	return PyModule_Create(&Classifiers);
 }
