@@ -468,15 +468,28 @@ static PyObject *train_regression_stump(PyObject *self, PyObject *args)
 }
 
 
-static PyMethodDef ClassifierMethods[] = {
+static PyMethodDef classifier_methods[] = {
     {"fit_regression_stump", train_regression_stump, METH_VARARGS, train_regression_stump_docs},
     {"fit_decision_stump", train_decision_stump, METH_VARARGS, train_decision_stump_docs},
      {NULL, NULL, 0, NULL} /* Sentinel */
 };
 
-PyMODINIT_FUNC initclassifiers(void)
+//PyMODINIT_FUNC initclassifiers(void)
+//{
+//    char * docstring = "Simple classifiers implemented in C.";
+//    (void) Py_InitModule3("classifiers", ClassifierMethods, docstring);
+//    import_array();
+//}
+
+static struct PyModuleDef Classifiers = {
+	PyModuleDef_HEAD_INIT,
+	"classifiers",
+	"usage: ",
+	-1,
+	classifier_methods
+};
+
+PyMODINIT_FUNC PyInit_classifiers(void)
 {
-    char * docstring = "Simple classifiers implemented in C.";
-    (void) Py_InitModule3("classifiers", ClassifierMethods, docstring);
-    import_array();
+	return PyModule_Create(&Classifiers);
 }
