@@ -468,7 +468,7 @@ static PyObject *train_regression_stump(PyObject *self, PyObject *args)
 }
 
 
-static PyMethodDef classifier_methods[] = {
+static PyMethodDef ClassifierMethods[] = {
     {"fit_regression_stump", train_regression_stump, METH_VARARGS, train_regression_stump_docs},
     {"fit_decision_stump", train_decision_stump, METH_VARARGS, train_decision_stump_docs},
      {NULL, NULL, 0, NULL} /* Sentinel */
@@ -479,7 +479,7 @@ static struct PyModuleDef Classifiers = {
 	"classifiers",
 	NULL,
 	-1,
-	classifier_methods
+	ClassifierMethods
 };
 
 PyMODINIT_FUNC PyInit_classifiers(void)
